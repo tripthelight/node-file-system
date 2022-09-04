@@ -9,7 +9,17 @@ fs.open(filename, 'a', (err, fd) => {
   if (err) {
     console.log(err.message);
   } else {
-    console.log(fd);
-    console.log(`file (${fd}) opened successfully!`);
+    // let bytes = fs.writeSync(fd, str);
+    // console.log(`${bytes} bytes written`);
+
+    fs.write(fd, str, (err, bytes) => {
+      if (err) {
+        console.log(err.message);
+      } else {
+        console.log(`${bytes} bytes written`);
+      }
+    });
+
+    // console.log(`file (${fd}) opened successfully!`);
   }
 });
